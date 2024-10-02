@@ -44,15 +44,15 @@ def login(request):
             return render(request, 'nologin.html', {'error_message': error_message})
     return render(request, 'Login.html')
 
-# def update_note(request, pk):
-#     mynote = get_object_or_404(Note, pk=pk)
-#     if request.method == 'POST':
-#         new_note = request.POST['newtitle']
-#         mynote.send = new_note
-#         mynote.save()
-#         return redirect('updatenote')
+def update_note(request, pk):
+    mynote = get_object_or_404(Note, pk=pk)
+    if request.method == 'POST':
+        new_note = request.POST['newtitle']
+        mynote.send = new_note
+        mynote.save()
+        return redirect('updatenote')
 
-#     return render(request,'update_note.html', {'mynote': mynote} )
+    return render(request,'update_note.html', {'mynote': mynote} )
 
 # def delete_note(request, pk):
 #     mynote_delete =get_object_or_404(Note, pk=pk)

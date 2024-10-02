@@ -6,6 +6,6 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('login/', views.login, name='login' ),
     path('addnote/', views.addnote, name="addnote"),
-    # path('note/update/<int:pk/', views.update_note, name="updatenote"),
-    # path('note/update/<int:pk/', views.delete_note, name="updatenote"),
+    path('note/updatenote/<int:pk/', views.update_note, name="updatenote"),
+    # path('note/update/<int:pk/', views.delete_note, name="updatenote1"),
 ]
