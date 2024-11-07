@@ -44,11 +44,18 @@ def login(request):
             return render(request, 'nologin.html', {'error_message': error_message})
     return render(request, 'Login.html')
 
-def update_note(request, pk):
-    mynote = get_object_or_404(Note, pk=pk)
+def update_note(request, model_name, pk):
+    if model_name == 'updatenote':
+        mynote = get_object_or_404(Note, pk=pk)
     if request.method == 'POST':
-        new_note = request.POST['newtitle']
-        mynote.send = new_note
+        new_title = request.POST['title']
+        mynote.send = new_title
+        mynote.save()
+        new_content = request.POST['content']
+        mynote.send = new_content
+        mynote.save()
+        new_image = request.FILES['image']
+        mynote.send = new_image
         mynote.save()
         return redirect('updatenote')
 
@@ -61,6 +68,7 @@ def update_note(request, pk):
 
 
 def addnote(request):
+    
     return render (request, 'Addnote.html')
 
 

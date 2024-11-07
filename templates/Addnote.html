@@ -83,6 +83,34 @@ body{
                    <button href="#" type="submit" class="btn btn-primary"><i class="bi bi-file-plus"></i>Add Note</button>
                    
                 </form>
+
+                {% for note in notes %}
+       <div class="container text-center mt-5">
+        <div class="row align-items-center">
+          <div class="col">
+            <img src="{{ note.image.url }}">
+          </div>
+          <div class="col">
+            <p class="text-white">{{ note.title }}</p>
+          </div>
+
+          <div class="col">
+            <p class="text-white">{{ note.content }}</p>
+          </div>
+          <div class="col">
+            
+            <p class="text-white">{{ note.created_at }}</p> <a href="/note/updatenote/{{ 1 }}/" class="btn btn-warning btn-sm ms-2 text-white">Update</a><form action="" method="POST" class="d-inline">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger btn-sm ms-2">Delete</button>
+            </form>
+            
+               
+            </form>
+          </div>
+        </div>
+      </div>
+       
+      {% endfor %}
                 
               </div>
             </div>
