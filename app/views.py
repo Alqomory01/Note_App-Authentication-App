@@ -13,7 +13,9 @@ def home(request):
         content = request.POST.get('note')
         image = request.FILES.get('image')
         if title and content:
-            send = Note(title=title, content=content, image=image)
+            send = Note(title=title, content=content)        
+            if image:
+                send.image = image
             send.save()
     return render(request, 'index.html', {"notes": notes})
 
