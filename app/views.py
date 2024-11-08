@@ -48,16 +48,19 @@ def update_note(request, model_name, pk):
     if model_name == 'updatenote':
         mynote = get_object_or_404(Note, pk=pk)
     if request.method == 'POST':
-        new_title = request.POST['title']
-        mynote.send = new_title
-        mynote.save()
-        new_content = request.POST['content']
-        mynote.send = new_content
-        mynote.save()
-        new_image = request.FILES['image']
-        mynote.send = new_image
-        mynote.save()
-        return redirect('updatenote')
+        new_title = request.POST.get('title')
+        if new_title is not None:
+            mynote.title = new_title
+            mynote.save()
+        new_content = request.POST.get('note')
+        if new_content is not None:     
+            mynote.note = new_content
+            mynote.save()
+
+            # new_image = request.FILES['image']
+            # mynote.send = new_image
+            # mynote.save()
+            # return redirect('updatenote')
 
     return render(request,'update_note.html', {'mynote': mynote} )
 
