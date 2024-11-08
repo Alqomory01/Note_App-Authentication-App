@@ -56,11 +56,11 @@ def update_note(request, model_name, pk):
         if new_content is not None:     
             mynote.note = new_content
             mynote.save()
-
-            # new_image = request.FILES['image']
-            # mynote.send = new_image
-            # mynote.save()
-            # return redirect('updatenote')
+        new_image = request.FILES.get('image')
+        if new_image:
+            mynote.image = new_image
+            mynote.save()
+            return redirect('updatenote')
 
     return render(request,'update_note.html', {'mynote': mynote} )
 
