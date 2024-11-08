@@ -9,11 +9,12 @@ from django.contrib.auth import authenticate
 def home(request):
     notes = Note.objects.all().order_by('-created_at')
     if request.method == 'POST':
-        title = request.POST['title']
-        content = request.POST['note']
-        image = request.FILES['image']
-        send = Note(title=title, content=content, image=image)
-        send.save()
+        title = request.POST.get['title']
+        content = request.POST.get['note']
+        image = request.FILES.get['image']
+        if title and content:
+            send = Note(title=title, content=content, image=image)
+            send.save()
     return render(request, 'index.html', {"notes": notes})
 
 
