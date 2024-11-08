@@ -92,6 +92,9 @@ body{
                     {% csrf_token %}
                    <p class="text-white">Add description</p> <input type="text"  name="note" placeholder="Type your note" class="form-control mb-2" value="{{ mynote.content }}">
 
+                   {% csrf_token %}
+                   <p>Add up your image</p><input type="file" name="image"  value="{{ mynote.image }}">
+
                    <!-- <p>Add up your image</p><input type="file" name="image"> -->
                     
                    <button href="#" type="submit" class="btn btn-primary"><i class="bi bi-file-plus"></i>Update</button>
